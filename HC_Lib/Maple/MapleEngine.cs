@@ -13,7 +13,7 @@ namespace HC_Lib.Maple
         private Process MapleProcess;
 
         private StringBuilder InputData = new StringBuilder();
-        private object InputMutex = new object();
+        private readonly object InputMutex = new object();
 
         public MapleEngine(string MaplePath)
         {
