@@ -5,9 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HC_Udregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="715" Width="1112" WindowStyle="None">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      GlassFrameThickness="10"
+                      NonClientFrameEdges="None"
+                      ResizeBorderThickness="3"/>
+    </WindowChrome.WindowChrome>
     <Grid>
-        
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="950"/>
+            <ColumnDefinition Width="162"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="1" Background="#1F2528">
+            <StackPanel Orientation="Horizontal" Height="47">
+                <Button Content="-" Width="54"/>
+                <Button Content="O" Width="54"/>
+                <Button Content="X" Width="54"/>
+            </StackPanel>
+            <StackPanel>
+                <Button x:Name="btnSelectMaple" Content="Vælg Maple" Margin="15 41 15 0" Height="38" Background="#7336B4" Foreground="White" FontSize="18" FontWeight="Regular" Style="{StaticResource BTNCORNER}" Click="btnSelectMaple_Click"/>
+                <Grid Margin="0 12 0 0">
+                    <Border BorderBrush="#7336B4" BorderThickness="2" CornerRadius="5" Width="132" Height="53"/>
+                    <RichTextBox x:Name="rtbMaplePath" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="Vælg maple path"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </Grid>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Column="0" Background="#15191B">
+            
+        </StackPanel>
     </Grid>
 </Window>

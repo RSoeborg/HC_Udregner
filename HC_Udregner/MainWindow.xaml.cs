@@ -56,8 +56,14 @@ namespace HC_Udregner
             if (!string.IsNullOrWhiteSpace(Settings.Default.Path))
             {
                 FileInfo cmaple = new FileInfo(Settings.Default.Path);
-                //lblMaplePath.Content = $"Path: {cmaple.Directory.Parent.FullName}";
+                rtbMaplePath.Document.Blocks.Clear();
+                rtbMaplePath.AppendText($"Path: {cmaple.Directory.Parent.FullName}");
             }
+        }
+
+        private void btnSelectMaple_Click(object sender, RoutedEventArgs e)
+        {
+            SelectMaple();
         }
     }
 }
