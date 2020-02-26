@@ -33,7 +33,7 @@
             <Setter Property="Foreground" Value="Black" />
             <Setter Property="Button.Effect">
                 <Setter.Value>
-                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="4" BlurRadius="5" Opacity="0.2" />
+                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                 </Setter.Value>
             </Setter>
         </Style>
@@ -44,7 +44,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border CornerRadius="10,10,10,10" Background="#1F2528">
+                        <Border CornerRadius="10,10,10,10" Background="#242526">
                             <ContentPresenter x:Name="contentPresenter"   ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding  Content}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding  VerticalContentAlignment}"/>
                         </Border>
                     </ControlTemplate>
