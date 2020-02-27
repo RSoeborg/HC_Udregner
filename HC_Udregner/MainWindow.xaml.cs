@@ -26,6 +26,7 @@ namespace HC_Udregner
         public MainWindow()
         {
             InitializeComponent();
+            GaussJordanPanel.Visibility = Visibility.Hidden;
         }
 
         private void SelectMaple()
@@ -94,6 +95,18 @@ namespace HC_Udregner
             {
                 DragMove();
             }
+        }
+
+        private void GaussJordanButton_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard.Visibility = Visibility.Hidden;
+            GaussJordanPanel.Visibility = Visibility.Visible;
+        }
+
+        private void BackButton_Click(object sender, RoutedEventArgs e)
+        {
+            Dashboard.Visibility = Visibility.Visible;
+            GaussJordanPanel.Visibility = Visibility.Hidden;
         }
     }
 }
