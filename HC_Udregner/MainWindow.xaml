@@ -181,15 +181,16 @@
                                 <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                             </Border.Effect>
                         </Border>
-                        <RichTextBox Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
+                        <!-- Til tekstboks -->
+                        <RichTextBox x:Name="rtbMatrix" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
                             <FlowDocument>
                                 <Paragraph>
-                                    <Run Text="Matrix([1, 1, 1],[1, 1, 1],[1, 1, 1])"/>
+                                    <Run Text="Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, a, 9]])"/>
                                 </Paragraph>    
                             </FlowDocument>
                         </RichTextBox>
                     </Grid>
-                    <Button x:Name="btnCalcGauss" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Margin="40 0 0 0"/>
+                    <Button x:Name="btnCalcGauss" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Margin="40 0 0 0" Click="btnCalcGauss_Click"/>
                 </StackPanel>
                 <Grid Margin="50 0" Height="440">
                     <Border BorderBrush="#7336B4" BorderThickness="3" CornerRadius="15" Background="#18191A">
@@ -197,7 +198,7 @@
                             <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                         </Border.Effect>
                     </Border>
-                    <RichTextBox x:Name="rtbOutput" Margin="5" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                    <RichTextBox x:Name="rtbOutput" FontFamily="Consolas" Margin="5" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Text="Maple Output"/>

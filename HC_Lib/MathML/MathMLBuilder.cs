@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HC_Lib.MathML
 {
-    class MathMLBuilder
+    public class MathMLBuilder
     {
         private StringBuilder builder = new StringBuilder();
         private readonly bool IncludeHeader;

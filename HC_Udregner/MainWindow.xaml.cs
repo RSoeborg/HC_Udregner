@@ -1,4 +1,6 @@
-﻿using HC_Udregner.Properties;
+﻿using HC_Lib.Maple;
+using HC_Lib.MathML;
+using HC_Udregner.Properties;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
@@ -15,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
 
 namespace HC_Udregner
 {
@@ -107,6 +110,68 @@ namespace HC_Udregner
         {
             Dashboard.Visibility = Visibility.Visible;
             GaussJordanPanel.Visibility = Visibility.Hidden;
+        }
+
+        private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
+        {
+            MathMLBuilder MathBuilder = default;
+            var engine = new MapleLinearAlgebra(Settings.Default.Path);
+
+            TextRange range = new TextRange(rtbMatrix.Document.ContentStart, rtbMatrix.Document.ContentEnd);
+            string gaussMatrixRaw = range.Text;
+            if (gaussMatrixRaw.EndsWith(";"))
+                gaussMatrixRaw = gaussMatrixRaw.Remove(gaussMatrixRaw.Length - 1, 1).Replace("\r\n", string.Empty);
+
+            Task.Run(async () => {
+                engine.Open();
+                var minified = await engine.LPrint(gaussMatrixRaw);
+                minified = minified.Replace("\r\n", "");
+
+                MapleMatrix matrix = default;
+                try
+                {
+                    matrix = new MapleMatrix(minified);
+                }
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Matrix kunne ikke fortolkes. Vær sikker på du har kopieret fra maple");
+                    //rtOutput.Dispatcher.Invoke(() => {
+                    //    btnTest.Content = "Udregn Matrix";
+                    //    btnTest.IsEnabled = true;
+                    //});
+                    engine.Close();
+                    return;
+                }
+
+                var TutorResult = await HC_Lib.JavaWin.JavaMapletInteractor.GaussJordanEliminationTutor(engine, matrix);
+                engine.Close();
+
+                MathBuilder = new MathMLBuilder(TutorResult.MathML);
+                //MathBuilder.AddText("\nOpskriver Ligninger:\n");
+
+                var MapleML = new MapleMathML(Settings.Default.Path);
+                MapleML.Open();
+
+                var specialML = MathBuilder.ToString().Replace("<mo>&RightArrow;</mo>", string.Empty);
+                var firstIndex = specialML.IndexOf("<mfenced", 0);
+                specialML = specialML.Insert(firstIndex, "<mtext>&NewLine; Opstiller matrix &NewLine;</mtext>");
+
+                var imported = await MapleML.Import(specialML);
+
+                // For copy: 
+                //MathBuilder.ToString();
+
+                rtbOutput.Dispatcher.Invoke(() => {
+                    rtbOutput.Document.Blocks.Clear();
+                    rtbOutput.AppendText( imported );
+                });
+
+                MapleML.Close();
+
+
+            });
+
+
         }
     }
 }

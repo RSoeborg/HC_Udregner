@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HC_Lib.Maple
 {
-    class MapleMathML : MapleEngine
+    public class MapleMathML : MapleEngine
     {
         public MapleMathML(string MaplePath) : base(MaplePath) { }
 
@@ -50,8 +50,10 @@ namespace HC_Lib.Maple
 
         private string Prettify(string MathML) {
             return MathML
+                .Replace("RightArrow([", "     ")
                 .Replace("RightArrow(", string.Empty)
                 .Replace("]],", "]")
+                .Replace("]]),", "]")
                 .Replace("]])", "]")
 
                 .Replace("]]", "]")

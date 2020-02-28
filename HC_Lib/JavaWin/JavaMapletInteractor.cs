@@ -14,7 +14,7 @@ using System.Web;
 
 namespace HC_Lib.JavaWin
 {
-    sealed class JavaMapletInteractor
+    public sealed class JavaMapletInteractor
     {
         static readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
