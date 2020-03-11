@@ -108,23 +108,20 @@ namespace HC_Udregner
         private void GaussJordanButton_Click(object sender, RoutedEventArgs e)
         {
             HideDashboard(GaussJordanPanel);
-            GaussJordanBackButton.Visibility = Visibility.Visible;
+            //GaussJordanBackButton.Visibility = Visibility.Visible;
         }
         private void GaussianButton_Click(object sender, RoutedEventArgs e)
         {
             HideDashboard(GaussianPanel);
         }
-        private void HideOtherPanels()
+
+        public void HideOtherPanels()
         {
             Dashboard.Visibility = Visibility.Visible;
             GaussJordanPanel.Visibility = Visibility.Hidden;
             GaussianPanel.Visibility = Visibility.Hidden;
         }
 
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            HideOtherPanels();
-        }
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
         {
             var method = nameof(MapletOutput.GaussJordanEliminationTutor);

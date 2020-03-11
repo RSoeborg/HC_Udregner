@@ -222,7 +222,8 @@
                     <RowDefinition Height="106"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Button x:Name="GaussJordanBackButton" Height="31" Width="38" Style="{StaticResource BackButton}" Margin="50 30 0 0" Foreground="White" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>
+                    <local:BackButton Height="31" Width="38" Margin="50 30 0 0" VerticalAlignment="Top" HorizontalAlignment="Left" />
+                    <!--<Button x:Name="GaussJordanBackButton" Height="31" Width="38" Style="{StaticResource BackButton}" Margin="50 30 0 0" Foreground="White" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>-->
                     <Label Content="Gauss Jordan" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="0 5 0 0" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Row="1">
@@ -271,7 +272,7 @@
             </Grid>
         </Border>
 
-        <Border x:Name="GaussianPanel" Grid.Column="0" Background="#18191A" CornerRadius="20 0 0 20">
+        <Border x:Name="GaussianPanel" Grid.Column="0" Background="#18191A" CornerRadius="20 0 0 20" d:IsHidden="True">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="98"/>
@@ -280,7 +281,8 @@
                     <RowDefinition Height="106"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Button x:Name="GaussianBackButton" Height="31" Width="38" Style="{StaticResource BackButton}" Margin="50 30 0 0" Foreground="White" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>
+                    <local:BackButton Height="31" Width="38" Margin="50 30 0 0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <!--<Button x:Name="GaussianBackButton" Height="31" Width="38" Style="{StaticResource BackButton}" Margin="50 30 0 0" Foreground="White" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>-->
                     <Label Content="Gaussian" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="0 5 0 0" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Row="1">
