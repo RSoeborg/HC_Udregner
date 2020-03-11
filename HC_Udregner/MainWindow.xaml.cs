@@ -1,4 +1,5 @@
-﻿using HC_Lib.Maple;
+﻿using HC_Lib.JavaWin;
+using HC_Lib.Maple;
 using HC_Lib.MathML;
 using HC_Udregner.Properties;
 using Microsoft.Win32;
@@ -132,6 +133,16 @@ namespace HC_Udregner
 
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
         {
+            var method = nameof(JavaMapletInteractor.GaussJordanEliminationTutor);
+            if (sender is Button)
+            {
+                var senderButton = (Button)sender;
+                if (senderButton.Uid.Equals("gaussian")) {
+                    method = nameof(JavaMapletInteractor.GaussianEliminationTutor);
+                }
+            }
+            else return;
+
             MathMLBuilder MathBuilder = default;
             var engine = new MapleLinearAlgebra(Settings.Default.Path);
 
@@ -160,7 +171,11 @@ namespace HC_Udregner
                     return;
                 }
 
-                var TutorResult = await HC_Lib.JavaWin.JavaMapletInteractor.GaussJordanEliminationTutor(engine, matrix);
+                var methodType = typeof(JavaMapletInteractor).GetMethod(method);
+                var resultTask = (Task<JavaMapletGaussOutput>)methodType.Invoke(null, new object[] { engine, matrix });
+                var TutorResult = await resultTask;
+
+                //var TutorResult = await JavaMapletInteractor.GaussJordanEliminationTutor(engine, matrix);
                 engine.Close();
 
                 MathBuilder = new MathMLBuilder(TutorResult.MathML);
@@ -184,11 +199,7 @@ namespace HC_Udregner
                 });
 
                 MapleML.Close();
-
-
             });
-
-
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
