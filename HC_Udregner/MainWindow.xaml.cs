@@ -150,6 +150,7 @@ namespace HC_Udregner
                             LastMathML = maplet.MathML;
                             rtbGaussian.Document.Blocks.Clear();
                             rtbGaussian.AppendText(imported);
+                            //rtbOutput.Text = imported;
 
                             senderButton.Content = originalText;
                             senderButton.IsEnabled = true;
