@@ -305,7 +305,7 @@
                             </TextBox.CaretBrush>
                         </TextBox>
                     </Grid>
-                    <Button Grid.Column="3" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Click="btnCalcGauss_Click"/>
+                    <Button x:Uid="gaussian" Grid.Column="3" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Click="btnCalcGauss_Click"/>
                 </Grid>
                 <Grid Margin="50 0" Grid.Row="2">
                     <Border BorderBrush="#7336B4" BorderThickness="3" CornerRadius="15" Background="#18191A">
@@ -313,7 +313,7 @@
                             <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                         </Border.Effect>
                     </Border>
-                    <RichTextBox FontFamily="Consolas" Margin="5" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+                    <RichTextBox x:Name="rtbGaussian" FontFamily="Consolas" Margin="5" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         <FlowDocument>
                             <Paragraph>
                                 <Run Text="Maple Output"/>
@@ -325,7 +325,7 @@
                     </RichTextBox>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <Button Content="Kopier Til Maple" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
+                    <Button Content="Kopier Til Maple" Click="CopyMaple_Click"  Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
                     <Button Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200" Click="ClearButton_Click"/>
                 </Grid>
             </Grid>
