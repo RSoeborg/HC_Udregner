@@ -117,8 +117,7 @@ namespace HC_Udregner
             MathMLBuilder MathBuilder = default;
             var engine = new MapleLinearAlgebra(Settings.Default.Path);
 
-            TextRange range = new TextRange(rtbMatrix.Document.ContentStart, rtbMatrix.Document.ContentEnd);
-            string gaussMatrixRaw = range.Text;
+            string gaussMatrixRaw = rtbMatrix.Text;
             if (gaussMatrixRaw.EndsWith(";"))
                 gaussMatrixRaw = gaussMatrixRaw.Remove(gaussMatrixRaw.Length - 1, 1).Replace("\r\n", string.Empty);
 
