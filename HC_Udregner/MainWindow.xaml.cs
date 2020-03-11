@@ -181,8 +181,23 @@ namespace HC_Udregner
 
         private void CopyMaple_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(LastMathML);
-            MessageBox.Show("Kopieret til klipholderen5");
+            if (sender is Button)
+            {
+                var button = (Button)sender;
+                var original = button.Content;
+                button.IsEnabled = false;
+                button.Content = "Kopieret";
+                Clipboard.SetText(LastMathML);
+
+                Task.Run(async () => {
+                    await Task.Delay(5000);
+                    button.Dispatcher.Invoke(() => {
+                        button.IsEnabled = true;
+                        button.Content = original;
+                    });
+                });
+            
+            }
         }
     }
 }
