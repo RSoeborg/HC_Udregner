@@ -28,7 +28,7 @@ namespace HC_Udregner
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow parentWindow = (MainWindow)Window.GetWindow(this);
-            parentWindow.HideOtherPanels();
+            parentWindow.ShownPanel(parentWindow.Dashboard);
         }
     }
 }
