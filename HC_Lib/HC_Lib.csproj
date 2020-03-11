@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="JavaWin\JavaMapletGaussOutput.cs" />
     <Compile Include="JavaWin\JavaMapletInteractor.cs" />
+    <Compile Include="JavaWin\MapletOutput.cs" />
     <Compile Include="Maple\MapleEngine.cs" />
     <Compile Include="Maple\MapleLinearAlgebra.cs" />
     <Compile Include="Maple\MapleMathML.cs" />

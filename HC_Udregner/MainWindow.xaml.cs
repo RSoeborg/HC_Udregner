@@ -27,6 +27,8 @@ namespace HC_Udregner
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string LastMathML;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -71,12 +73,10 @@ namespace HC_Udregner
         {
             SelectMaple();
         }
-
         private void closeButton_Click(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
         }
-
         private void maximizeButton_Click(object sender, RoutedEventArgs e)
         {
             if (this.WindowState == WindowState.Normal)
@@ -88,12 +88,10 @@ namespace HC_Udregner
                 this.WindowState = WindowState.Normal;
             }
         }
-
         private void minimizeButton_Click(object sender, RoutedEventArgs e)
         {
             this.WindowState = WindowState.Minimized;
         }
-
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -101,7 +99,6 @@ namespace HC_Udregner
                 DragMove();
             }
         }
-
         private void HideDashboard(Border border)
         {
             Dashboard.Visibility = Visibility.Hidden;
@@ -113,12 +110,10 @@ namespace HC_Udregner
             HideDashboard(GaussJordanPanel);
             GaussJordanBackButton.Visibility = Visibility.Visible;
         }
-
         private void GaussianButton_Click(object sender, RoutedEventArgs e)
         {
             HideDashboard(GaussianPanel);
         }
-
         private void HideOtherPanels()
         {
             Dashboard.Visibility = Visibility.Visible;
@@ -130,82 +125,64 @@ namespace HC_Udregner
         {
             HideOtherPanels();
         }
-
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
         {
-            var method = nameof(JavaMapletInteractor.GaussJordanEliminationTutor);
+            var method = nameof(MapletOutput.GaussJordanEliminationTutor);
             if (sender is Button)
             {
                 var senderButton = (Button)sender;
-                if (senderButton.Uid.Equals("gaussian")) {
-                    method = nameof(JavaMapletInteractor.GaussianEliminationTutor);
-                }
-            }
-            else return;
+                var originalText = senderButton.Content;
+                senderButton.Content = "Udregner ...";
+                senderButton.IsEnabled = false;
 
-            MathMLBuilder MathBuilder = default;
-            var engine = new MapleLinearAlgebra(Settings.Default.Path);
-
-            string gaussMatrixRaw = rtbMatrix.Text;
-            if (gaussMatrixRaw.EndsWith(";"))
-                gaussMatrixRaw = gaussMatrixRaw.Remove(gaussMatrixRaw.Length - 1, 1).Replace("\r\n", string.Empty);
-
-            Task.Run(async () => {
-                engine.Open();
-                var minified = await engine.LPrint(gaussMatrixRaw);
-                minified = minified.Replace("\r\n", "");
-
-                MapleMatrix matrix = default;
-                try
+                bool gaussian = senderButton.Uid.Equals("gaussian", StringComparison.CurrentCultureIgnoreCase);
+                
+                if (gaussian)
+                    method = nameof(MapletOutput.GaussianEliminationTutor);
+                
+                var matrix = rtbMatrix.Text;
+                var maplet = new MapletOutput(Settings.Default.Path);
+                Task.Run(async () =>
                 {
-                    matrix = new MapleMatrix(minified);
-                }
-                catch (ArgumentException)
-                {
-                    MessageBox.Show("Matrix kunne ikke fortolkes. Vær sikker på du har kopieret fra maple");
-                    //rtOutput.Dispatcher.Invoke(() => {
-                    //    btnTest.Content = "Udregn Matrix";
-                    //    btnTest.IsEnabled = true;
-                    //});
-                    engine.Close();
-                    return;
-                }
+                    var imported = await (Task<string>)typeof(MapletOutput).GetMethod(method).Invoke(maplet, new object[] { matrix });
 
-                var methodType = typeof(JavaMapletInteractor).GetMethod(method);
-                var resultTask = (Task<JavaMapletGaussOutput>)methodType.Invoke(null, new object[] { engine, matrix });
-                var TutorResult = await resultTask;
+                    if (gaussian)
+                    {
+                        rtbGaussian.Dispatcher.Invoke(() =>
+                        {
+                            LastMathML = maplet.MathML;
+                            rtbGaussian.Document.Blocks.Clear();
+                            rtbGaussian.AppendText(imported);
 
-                //var TutorResult = await JavaMapletInteractor.GaussJordanEliminationTutor(engine, matrix);
-                engine.Close();
+                            senderButton.Content = originalText;
+                            senderButton.IsEnabled = true;
+                        });
+                    }
+                    else
+                    {
+                        rtbOutput.Dispatcher.Invoke(() =>
+                        {
+                            LastMathML = maplet.MathML;
+                            rtbOutput.Document.Blocks.Clear();
+                            rtbOutput.AppendText(imported);
 
-                MathBuilder = new MathMLBuilder(TutorResult.MathML);
-                //MathBuilder.AddText("\nOpskriver Ligninger:\n");
-
-                var MapleML = new MapleMathML(Settings.Default.Path);
-                MapleML.Open();
-
-                var specialML = MathBuilder.ToString().Replace("<mo>&RightArrow;</mo>", string.Empty);
-                var firstIndex = specialML.IndexOf("<mfenced", 0);
-                specialML = specialML.Insert(firstIndex, "<mtext>&NewLine; Opstiller matrix &NewLine;</mtext>");
-
-                var imported = await MapleML.Import(specialML);
-
-                // For copy: 
-                //MathBuilder.ToString();
-
-                rtbOutput.Dispatcher.Invoke(() => {
-                    rtbOutput.Document.Blocks.Clear();
-                    rtbOutput.AppendText( imported );
+                            senderButton.Content = originalText;
+                            senderButton.IsEnabled = true;
+                        });
+                    }
                 });
-
-                MapleML.Close();
-            });
+            }
         }
-
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
             rtbOutput.Document.Blocks.Clear();
             rtbOutput.AppendText("Maple Output");
+        }
+
+        private void CopyMaple_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(LastMathML);
+            MessageBox.Show("Kopieret til klipholderen5");
         }
     }
 }
