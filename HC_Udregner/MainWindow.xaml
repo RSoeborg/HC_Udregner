@@ -13,6 +13,7 @@
                       ResizeBorderThickness="3"
                       CornerRadius="20"/>
     </WindowChrome.WindowChrome>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition MinWidth="950"/>
@@ -169,20 +170,33 @@
         </Border>
 
         <Border x:Name="GaussJordanPanel" Grid.Column="0" Background="#18191A" CornerRadius="20 0 0 20">
-            <StackPanel>
-                <StackPanel Height="98" Orientation="Horizontal">
-                    <Button x:Name="BackButton" Height="98" Width="88" Content="&lt;-" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" FontSize="50" Click="BackButton_Click"/>
-                    <Label Content="Gauss Jordan" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Center" Margin="235 0 0 0"/>
-                </StackPanel>
-                <StackPanel Height="71" Orientation="Horizontal">
-                    <Grid Width="700" Margin="50 0 0 0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="98"/>
+                    <RowDefinition Height="71"/>
+                    <RowDefinition MinHeight="440"/>
+                    <RowDefinition Height="106"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Button x:Name="BackButton"  Height="31" Width="38" Content="{StaticResource BackArrow}" Margin="50 30 0 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>
+                    <Label Content="Gauss Jordan" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="0 5 0 0" HorizontalAlignment="Center"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition MinWidth="700"/>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="110"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="1">
                         <Border BorderBrush="#7336B4" BorderThickness="2" Background="#18191A" CornerRadius="10" Height="33" VerticalAlignment="Top">
                             <Border.Effect>
                                 <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                             </Border.Effect>
                         </Border>
-                        <!-- Til tekstboks -->
-                        <RichTextBox x:Name="rtbMatrix" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
+                        <!-- Til tekstboks (så virker det ikke o.O) -->
+                        <RichTextBox x:Name="rtbMatrix" AcceptsReturn="False" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
                             <FlowDocument>
                                 <Paragraph>
                                     <Run Text="Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, a, 9]])"/>
@@ -190,9 +204,9 @@
                             </FlowDocument>
                         </RichTextBox>
                     </Grid>
-                    <Button x:Name="btnCalcGauss" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Margin="40 0 0 0" Click="btnCalcGauss_Click"/>
-                </StackPanel>
-                <Grid Margin="50 0" Height="440">
+                    <Button Grid.Column="3" x:Name="btnCalcGauss" Content="Udregn" Foreground="White" FontSize="18" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Top" Height="33" Width="110" Click="btnCalcGauss_Click"/>
+                </Grid>
+                <Grid Margin="50 0" Grid.Row="2">
                     <Border BorderBrush="#7336B4" BorderThickness="3" CornerRadius="15" Background="#18191A">
                         <Border.Effect>
                             <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
@@ -206,10 +220,11 @@
                         </FlowDocument>
                     </RichTextBox>
                 </Grid>
-                <StackPanel Height="106">
-                    
-                </StackPanel>
-            </StackPanel>
+                <Grid Grid.Row="3">
+                    <Button Content="Kopier Til Maple" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
+                    <Button Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200"/>
+                </Grid>
+            </Grid>
         </Border>
     </Grid>
 </Window>

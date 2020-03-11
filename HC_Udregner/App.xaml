@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:HC_Udregner"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+        <!-- Image Resources -->
+        <Image x:Key="BackArrow" Source="Pictures/arrow.png"/>
+        
+        
         <!-- Close Button Style -->
         <Style TargetType="Button" x:Key="CloseButton">
             <Setter Property="Background" Value="Transparent"/>
