@@ -38,7 +38,7 @@
                                     <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                                 </Border.Effect>
                             </Border>
-                            <RichTextBox x:Name="rtbMaplePath" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
+                            <RichTextBox x:Name="rtbMaplePath" IsReadOnly="True" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
                                 <FlowDocument>
                                     <Paragraph>
                                         <Run Text="Vælg maple path"/>
@@ -218,7 +218,11 @@
                             </Border.Effect>
                         </Border>
                         <!-- Til tekstboks (så virker det ikke o.O) -->
-                        <TextBox x:Name="rtbMatrix" Text="Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, a, 9]])" AcceptsReturn="False" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0"/>
+                        <TextBox x:Name="rtbMatrix" Text="Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, a, 9]])" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
+                            <TextBox.CaretBrush>
+                                <SolidColorBrush Color="White"/>
+                            </TextBox.CaretBrush>
+                        </TextBox>
 
 
                     </Grid>
@@ -236,11 +240,14 @@
                                 <Run Text="Maple Output"/>
                             </Paragraph>
                         </FlowDocument>
+                        <RichTextBox.CaretBrush>
+                            <SolidColorBrush Color="White"/>
+                        </RichTextBox.CaretBrush>
                     </RichTextBox>
                 </Grid>
                 <Grid Grid.Row="3">
                     <Button Content="Kopier Til Maple" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
-                    <Button Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200"/>
+                    <Button x:Name="ClearButton" Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200" Click="ClearButton_Click"/>
                 </Grid>
             </Grid>
         </Border>

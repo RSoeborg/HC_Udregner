@@ -30,6 +30,7 @@ namespace HC_Udregner
         {
             InitializeComponent();
             GaussJordanPanel.Visibility = Visibility.Hidden;
+            UpdateMaplePath();
         }
 
         private void SelectMaple()
@@ -171,6 +172,12 @@ namespace HC_Udregner
             });
 
 
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            rtbOutput.Document.Blocks.Clear();
+            rtbOutput.AppendText("Maple Output");
         }
     }
 }
