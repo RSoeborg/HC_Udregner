@@ -266,7 +266,7 @@
                     </RichTextBox>
                 </Grid>
                 <Grid Grid.Row="3">
-                    <Button Content="Kopier Til Maple" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
+                    <Button Content="Kopier Til Maple" Click="CopyMaple_Click" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
                     <Button x:Name="ClearButton" Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200" Click="ClearButton_Click"/>
                 </Grid>
             </Grid>
@@ -299,7 +299,7 @@
                                 <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                             </Border.Effect>
                         </Border>
-                        <TextBox Text="Matrix(3, 3, [[1, 2, 3], [4, 5, 6], [7, a, 9]])" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
+                        <TextBox Text="{Binding Path=Text, ElementName=rtbMatrix, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Height="33" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" Foreground="White" FontSize="13" FontFamily="Regular" Margin="5 9 5 0">
                             <TextBox.CaretBrush>
                                 <SolidColorBrush Color="White"/>
                             </TextBox.CaretBrush>
@@ -313,6 +313,7 @@
                             <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
                         </Border.Effect>
                     </Border>
+                    <!-- Ændre til textbox med multiline -->
                     <RichTextBox x:Name="rtbGaussian" FontFamily="Consolas" Margin="5" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
                         <FlowDocument>
                             <Paragraph>
@@ -325,6 +326,7 @@
                     </RichTextBox>
                 </Grid>
                 <Grid Grid.Row="3">
+                    <!-- Lav kopier til maple om til en usercontrol -->
                     <Button Content="Kopier Til Maple" Click="CopyMaple_Click"  Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="70 0 0 0" Height="50" Width="200"/>
                     <Button Content="Ryd Output" Foreground="White" FontSize="24" FontWeight="Medium" Style="{StaticResource MapleButton}" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 70 0" Height="50" Width="200" Click="ClearButton_Click"/>
                 </Grid>
