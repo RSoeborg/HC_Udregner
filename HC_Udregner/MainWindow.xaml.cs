@@ -29,7 +29,7 @@ namespace HC_Udregner
         public MainWindow()
         {
             InitializeComponent();
-            GaussJordanPanel.Visibility = Visibility.Hidden;
+            HideOtherPanels();
             UpdateMaplePath();
         }
 
@@ -101,16 +101,33 @@ namespace HC_Udregner
             }
         }
 
-        private void GaussJordanButton_Click(object sender, RoutedEventArgs e)
+        private void HideDashboard(Border border)
         {
             Dashboard.Visibility = Visibility.Hidden;
-            GaussJordanPanel.Visibility = Visibility.Visible;
+            border.Visibility = Visibility.Visible;
+        }
+
+        private void GaussJordanButton_Click(object sender, RoutedEventArgs e)
+        {
+            HideDashboard(GaussJordanPanel);
+            GaussJordanBackButton.Visibility = Visibility.Visible;
+        }
+
+        private void GaussianButton_Click(object sender, RoutedEventArgs e)
+        {
+            HideDashboard(GaussianPanel);
+        }
+
+        private void HideOtherPanels()
+        {
+            Dashboard.Visibility = Visibility.Visible;
+            GaussJordanPanel.Visibility = Visibility.Hidden;
+            GaussianPanel.Visibility = Visibility.Hidden;
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            Dashboard.Visibility = Visibility.Visible;
-            GaussJordanPanel.Visibility = Visibility.Hidden;
+            HideOtherPanels();
         }
 
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
