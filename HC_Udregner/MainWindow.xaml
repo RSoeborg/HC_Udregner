@@ -26,9 +26,9 @@
             <StackPanel>
                 <StackPanel Height="665">
                     <StackPanel Orientation="Horizontal" Height="21">
-                        <Button Content="-" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="minimizeButton_Click"/>
-                        <Button Content="O" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="maximizeButton_Click"/>
-                        <Button Content="X" Foreground="#8A8A8A" Width="54" Style="{StaticResource CloseButton}" Click="closeButton_Click"/>
+                        <Button Content="{StaticResource Minimize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="minimizeButton_Click"/>
+                        <Button Content="{StaticResource Maximize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="maximizeButton_Click"/>
+                        <Button Content="{StaticResource Close}" Foreground="#8A8A8A" Width="54" Style="{StaticResource CloseButton}" Click="closeButton_Click"/>
                     </StackPanel>
                     <StackPanel>
                         <Button x:Name="btnSelectMaple" Content="Vælg Maple" Margin="15 61 15 0" Height="38" Foreground="White" FontSize="18" FontWeight="Regular" Style="{StaticResource MapleButton}" Click="btnSelectMaple_Click"/>
@@ -178,7 +178,29 @@
                     <RowDefinition Height="106"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <Button x:Name="BackButton"  Height="31" Width="38" Content="{StaticResource BackArrow}" Margin="50 30 0 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click"/>
+                    <Button x:Name="BackButton"  Height="31" Width="38" Content="{StaticResource BackArrow}" Margin="50 30 0 0" Foreground="White" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="50" Click="BackButton_Click">
+                        <Button.Effect>
+                            <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3"/>
+                        </Button.Effect>
+                        <Button.Style>
+                            <Style TargetType="{x:Type Button}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type Button}">
+                                            <Border Background="{TemplateBinding Background}">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            </Border>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
                     <Label Content="Gauss Jordan" FontSize="48" FontWeight="Bold" Foreground="White" VerticalAlignment="Top" Margin="0 5 0 0" HorizontalAlignment="Center"/>
                 </Grid>
                 <Grid Grid.Row="1">

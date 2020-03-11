@@ -6,8 +6,10 @@
     <Application.Resources>
         <!-- Image Resources -->
         <Image x:Key="BackArrow" Source="Pictures/arrow.png"/>
-        
-        
+        <Image x:Key="Maximize" Source="Pictures/Maximize.png"/>
+        <Image x:Key="Minimize" Source="Pictures/Minimize.png"/>
+        <Image x:Key="Close" Source="Pictures/Close.png"/>
+
         <!-- Close Button Style -->
         <Style TargetType="Button" x:Key="CloseButton">
             <Setter Property="Background" Value="Transparent"/>

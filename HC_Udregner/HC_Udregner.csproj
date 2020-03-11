@@ -107,5 +107,14 @@
   <ItemGroup>
     <Resource Include="Pictures\arrow.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\Maximize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\Minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Pictures\Close.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
