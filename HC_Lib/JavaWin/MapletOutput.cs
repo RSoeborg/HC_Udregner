@@ -28,6 +28,11 @@ namespace HC_Lib.JavaWin
             return await TutorResult(nameof(GaussianEliminationTutor), RawMatrix);
         }
 
+        public async Task<string> InverseTutor(string RawMatrix)
+        {
+            return await TutorResult(nameof(InverseTutor), RawMatrix);
+        }
+
         private async Task<string> TutorResult(string Method, string RawMatrix)
         {
 

@@ -46,6 +46,11 @@ namespace HC_Lib.Maple
             return window;
         }
         
+        public async Task<IWindow> InverseTutor(MapleMatrix matrix)
+        {
+            return await Tutor(matrix, "Linear Algebra - Matrix Inverse", "InverseTutor");
+        }
+
         public async Task<IWindow> GaussJordanEliminationTutor(MapleMatrix matrix)
         {
             return await Tutor(matrix, "Gauss-Jordan Elimination", "GaussJordanEliminationTutor");
