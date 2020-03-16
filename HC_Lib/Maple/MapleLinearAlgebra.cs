@@ -45,7 +45,9 @@ namespace HC_Lib.Maple
             else await Task.Delay(200);//wait for it to be loaded properly.
             return window;
         }
-        
+
+        // TODO: Task<IWindow> InverseTutor(MapleMatrix matrix)
+
         public async Task<IWindow> GaussJordanEliminationTutor(MapleMatrix matrix)
         {
             return await Tutor(matrix, "Gauss-Jordan Elimination", "GaussJordanEliminationTutor");

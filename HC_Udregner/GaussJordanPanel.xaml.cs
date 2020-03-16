@@ -30,6 +30,9 @@ namespace HC_Udregner
                 senderButton.Content = "Udregner ...";
                 senderButton.IsEnabled = false;
 
+                var parentWindow = (MainWindow)Window.GetWindow(this);
+                parentWindow.Topmost = true;
+
                 var matrix = rtbMatrix.Text;
                 var maplet = new MapletOutput(Settings.Default.Path);
                 Task.Run(async () =>
@@ -41,6 +44,8 @@ namespace HC_Udregner
                         LastMathML = maplet.MathML;
                         rtbOutput.Document.Blocks.Clear();
                         rtbOutput.AppendText(imported);
+
+                        parentWindow.Topmost = false;
 
                         senderButton.Content = originalText;
                         senderButton.IsEnabled = true;
