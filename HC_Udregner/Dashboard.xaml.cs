@@ -38,5 +38,11 @@ namespace HC_Udregner
             parentWindow = (MainWindow)Window.GetWindow(this);
             parentWindow.ShownPanel(parentWindow.GaussianPanel);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            parentWindow = (MainWindow)Window.GetWindow(this);
+            parentWindow.ShownPanel(parentWindow.InversMatrixPanel);
+        }
     }
 }

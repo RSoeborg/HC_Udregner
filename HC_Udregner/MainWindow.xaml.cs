@@ -33,6 +33,7 @@ namespace HC_Udregner
             Dashboard.Visibility = Visibility.Collapsed;
             GaussJordanPanel.Visibility = Visibility.Collapsed;
             GaussianPanel.Visibility = Visibility.Collapsed;
+            InversMatrixPanel.Visibility = Visibility.Collapsed;
 
             userControl.Visibility = Visibility.Visible;
         }

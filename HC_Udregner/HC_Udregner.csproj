@@ -75,6 +75,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="InversMatrixPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -94,6 +98,9 @@
     </Compile>
     <Compile Include="GaussJordanPanel.xaml.cs">
       <DependentUpon>GaussJordanPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InversMatrixPanel.xaml.cs">
+      <DependentUpon>InversMatrixPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
