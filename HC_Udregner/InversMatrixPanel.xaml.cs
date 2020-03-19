@@ -20,8 +20,6 @@ namespace HC_Udregner
 
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
         {
-            //TODO: fix
-            //var method = nameof(MapletOutput.InversMatrix);
             if (sender is Button)
             {
                 var senderButton = (Button)sender;
@@ -36,13 +34,13 @@ namespace HC_Udregner
                 var maplet = new MapletOutput(Settings.Default.Path);
                 Task.Run(async () =>
                 {
-                    //var imported = await (Task<string>)typeof(MapletOutput).GetMethod(method).Invoke(maplet, new object[] { matrix });
+                    var imported = await maplet.InverseTutor(matrix);
 
                     rtbOutput.Dispatcher.Invoke(() =>
                     {
                         LastMathML = maplet.MathML;
                         rtbOutput.Document.Blocks.Clear();
-                        //rtbOutput.AppendText(imported);
+                        rtbOutput.AppendText(imported);
 
                         parentWindow.Topmost = false;
 

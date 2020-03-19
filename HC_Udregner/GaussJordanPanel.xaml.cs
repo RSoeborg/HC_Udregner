@@ -22,7 +22,6 @@ namespace HC_Udregner
 
         private void btnCalcGauss_Click(object sender, RoutedEventArgs e)
         {
-            var method = nameof(MapletOutput.GaussJordanEliminationTutor);
             if (sender is Button)
             {
                 var senderButton = (Button)sender;
@@ -37,7 +36,7 @@ namespace HC_Udregner
                 var maplet = new MapletOutput(Settings.Default.Path);
                 Task.Run(async () =>
                 {
-                    var imported = await (Task<string>)typeof(MapletOutput).GetMethod(method).Invoke(maplet, new object[] { matrix });
+                    var imported = await maplet.GaussJordanEliminationTutor(matrix);
 
                     rtbOutput.Dispatcher.Invoke(() =>
                     {
