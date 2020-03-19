@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace HC_Udregner
+{
+    /// <summary>
+    /// Interaction logic for Dashboard.xaml
+    /// </summary>
+    public partial class Dashboard : UserControl
+    {
+        private MainWindow parentWindow;
+
+        public Dashboard()
+        {
+            InitializeComponent();
+        }
+
+        private void GaussJordanButton_Click(object sender, RoutedEventArgs e)
+        {
+            parentWindow = (MainWindow)Window.GetWindow(this);
+            parentWindow.ShownPanel(parentWindow.GaussJordanPanel);
+        }
+
+        private void GaussianButton_Click(object sender, RoutedEventArgs e)
+        {
+            parentWindow = (MainWindow)Window.GetWindow(this);
+            parentWindow.ShownPanel(parentWindow.GaussianPanel);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            parentWindow = (MainWindow)Window.GetWindow(this);
+            parentWindow.ShownPanel(parentWindow.InversMatrixPanel);
+        }
+    }
+}
