@@ -24,6 +24,7 @@
             <local:GaussJordanPanel x:Name="GaussJordanPanel" Visibility="Collapsed"/>
             <local:GaussianPanel x:Name="GaussianPanel" Visibility="Collapsed"/>
             <local:InversMatrixPanel x:Name="InversMatrixPanel" Visibility="Collapsed"/>
+            <local:MatrixMultiplicationPanel x:Name="MatrixMultiplicationPanel" Visibility="Collapsed"/>
         </Grid>
 
         <Border x:Name="Toolbar" Grid.Column="1" Background="#242526" CornerRadius="0 20 20 0">

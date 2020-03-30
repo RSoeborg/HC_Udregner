@@ -150,7 +150,7 @@
                     </Grid>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="5" Grid.Row="1" Style="{StaticResource DashboardButtons}" Click="Button_Click">
+            <Button x:Name="InverSMatrixButton" Grid.Column="5" Grid.Row="1" Style="{StaticResource DashboardButtons}" Click="InversMatrixButton_Click">
                 <StackPanel>
                     <Label Content="Invers Matrix" Foreground="White" FontSize="24" Width="175" HorizontalContentAlignment="Center"/>
                     <Border Background="#6B6B6B" Width="149" Height="1" Margin="0 -9 0 0"/>
@@ -159,8 +159,14 @@
                     </Grid>
                 </StackPanel>
             </Button>
-            <Button Grid.Column="7" Grid.Row="1" Style="{StaticResource DashboardButtons}">
+            <Button x:Name="MatrixMultiplicationButton" Grid.Column="7" Grid.Row="1" Style="{StaticResource DashboardButtons}" Click="MatrixMultiplicationButton_Click">
+                <StackPanel>
+                    <Label Content="Multiplikation" Foreground="White" FontSize="24" Width="175" HorizontalContentAlignment="Center"/>
+                    <Border Background="#6B6B6B" Width="149" Height="1" Margin="0 -9 0 0"/>
+                    <Grid Width="165" Height="154">
 
+                    </Grid>
+                </StackPanel>
             </Button>
             <Button Grid.Column="1" Grid.Row="3" Style="{StaticResource DashboardButtons}">
 

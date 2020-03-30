@@ -39,10 +39,16 @@ namespace HC_Udregner
             parentWindow.ShownPanel(parentWindow.GaussianPanel);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void InversMatrixButton_Click(object sender, RoutedEventArgs e)
         {
             parentWindow = (MainWindow)Window.GetWindow(this);
             parentWindow.ShownPanel(parentWindow.InversMatrixPanel);
+        }
+
+        private void MatrixMultiplicationButton_Click(object sender, RoutedEventArgs e)
+        {
+            parentWindow = (MainWindow)Window.GetWindow(this);
+            parentWindow.ShownPanel(parentWindow.MatrixMultiplicationPanel);
         }
     }
 }
