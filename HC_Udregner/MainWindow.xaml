@@ -31,33 +31,37 @@
             <Border.Effect>
                 <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
             </Border.Effect>
-            <StackPanel>
-                <StackPanel Height="665">
-                    <StackPanel Orientation="Horizontal" Height="21">
-                        <Button Content="{StaticResource Minimize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="minimizeButton_Click"/>
-                        <Button Content="{StaticResource Maximize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="maximizeButton_Click"/>
-                        <Button Content="{StaticResource Close}" Foreground="#8A8A8A" Width="54" Style="{StaticResource CloseButton}" Click="closeButton_Click"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <Button x:Name="btnSelectMaple" Content="Vælg Maple" Margin="15 61 15 0" Height="38" Foreground="White" FontSize="18" FontWeight="Regular" Style="{StaticResource MapleButton}" Click="btnSelectMaple_Click"/>
-                        <Grid Margin="0 12 0 0">
-                            <Border BorderBrush="#7336B4" BorderThickness="2" CornerRadius="5" Width="132" Height="53" Background="#242526">
-                                <Border.Effect>
-                                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
-                                </Border.Effect>
-                            </Border>
-                            <RichTextBox x:Name="rtbMaplePath" IsReadOnly="True" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
-                                <FlowDocument>
-                                    <Paragraph>
-                                        <Run Text="Vælg maple path"/>
-                                    </Paragraph>
-                                </FlowDocument>
-                            </RichTextBox>
-                        </Grid>
-                    </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="21"/>
+                    <RowDefinition Height="180"/>
+                    <RowDefinition MinHeight="464"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Height="21">
+                    <Button Content="{StaticResource Minimize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="minimizeButton_Click"/>
+                    <Button Content="{StaticResource Maximize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="maximizeButton_Click"/>
+                    <Button Content="{StaticResource Close}" Foreground="#8A8A8A" Width="54" Style="{StaticResource CloseButton}" Click="closeButton_Click"/>
                 </StackPanel>
-                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0" Height="50" Content="HC Udregner" Foreground="White" FontSize="20" FontWeight="Medium"/>
-            </StackPanel>
+                <StackPanel Grid.Row="1">
+                    <Button x:Name="btnSelectMaple" Content="Vælg Maple" Margin="15 61 15 0" Height="38" Foreground="White" FontSize="18" FontWeight="Regular" Style="{StaticResource MapleButton}" Click="btnSelectMaple_Click"/>
+                    <Grid Margin="0 12 0 0">
+                        <Border BorderBrush="#7336B4" BorderThickness="2" CornerRadius="5" Width="132" Height="53" Background="#242526">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
+                            </Border.Effect>
+                        </Border>
+                        <RichTextBox x:Name="rtbMaplePath" IsReadOnly="True" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
+                            <FlowDocument>
+                                <Paragraph>
+                                    <Run Text="Vælg maple path"/>
+                                </Paragraph>
+                            </FlowDocument>
+                        </RichTextBox>
+                    </Grid>
+                </StackPanel>
+                <Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0" Height="50" Content="HC Udregner" Foreground="White" FontSize="20" FontWeight="Medium"/>
+            </Grid>
         </Border>
     </Grid>
 </Window>
