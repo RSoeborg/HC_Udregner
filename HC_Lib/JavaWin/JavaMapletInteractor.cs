@@ -14,7 +14,7 @@ using System.Web;
 
 namespace HC_Lib.JavaWin
 {
-    sealed class JavaMapletInteractor
+    public sealed class JavaMapletInteractor
     {
         static readonly SemaphoreSlim semaphoreSlim = new SemaphoreSlim(1, 1);
 
@@ -27,6 +27,13 @@ namespace HC_Lib.JavaWin
         {
             return await TutorResult(engine, matrix, nameof(engine.GaussianEliminationTutor));
         }
+
+        public async static Task<JavaMapletGaussOutput> InverseTutor(MapleLinearAlgebra engine, MapleMatrix matrix)
+        {
+            return await TutorResult(engine, matrix, nameof(engine.InverseTutor));
+        }
+
+
 
         private async static Task<JavaMapletGaussOutput> TutorResult(MapleLinearAlgebra engine, MapleMatrix matrix, string methodName)
         {

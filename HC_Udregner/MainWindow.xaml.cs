@@ -1,20 +1,12 @@
 ﻿using HC_Udregner.Properties;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace HC_Udregner
 {
@@ -26,8 +18,27 @@ namespace HC_Udregner
         public MainWindow()
         {
             InitializeComponent();
+            UpdateMaplePath();
         }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                DragMove();
+            }
+        }
+        public void ShownPanel(UserControl userControl)
+        {
+            Dashboard.Visibility = Visibility.Collapsed;
+            GaussJordanPanel.Visibility = Visibility.Collapsed;
+            GaussianPanel.Visibility = Visibility.Collapsed;
+            InversMatrixPanel.Visibility = Visibility.Collapsed;
+
+            userControl.Visibility = Visibility.Visible;
+        }
+
+        #region Toolbar
         private void SelectMaple()
         {
             var ofd = new OpenFileDialog();
@@ -56,8 +67,36 @@ namespace HC_Udregner
             if (!string.IsNullOrWhiteSpace(Settings.Default.Path))
             {
                 FileInfo cmaple = new FileInfo(Settings.Default.Path);
-                //lblMaplePath.Content = $"Path: {cmaple.Directory.Parent.FullName}";
+                rtbMaplePath.Document.Blocks.Clear();
+                rtbMaplePath.AppendText($"Path: {cmaple.Directory.Parent.FullName}");
             }
         }
+
+        private void btnSelectMaple_Click(object sender, RoutedEventArgs e)
+        {
+            SelectMaple();
+        }
+        private void closeButton_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
+        }
+        private void maximizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Normal)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+            else
+            {
+                this.WindowState = WindowState.Normal;
+            }
+        }
+        private void minimizeButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+        }
+        #endregion
+
+        
     }
 }

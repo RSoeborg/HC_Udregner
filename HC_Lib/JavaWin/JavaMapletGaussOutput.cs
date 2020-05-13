@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HC_Lib.JavaWin
 {
-    class JavaMapletGaussOutput
+    public class JavaMapletGaussOutput
     {
         private bool HasChanged = true;
         private string[] UnchangedTranslation;

@@ -3,6 +3,111 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Image Resources -->
+        <Image x:Key="BackArrow" Source="Pictures/arrow.png"/>
+        <Image x:Key="Maximize" Source="Pictures/Maximize.png"/>
+        <Image x:Key="Minimize" Source="Pictures/Minimize.png"/>
+        <Image x:Key="Close" Source="Pictures/Close.png"/>
+
+        <!-- Close Button Style -->
+        <Style TargetType="Button" x:Key="CloseButton">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="0 20 0 0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#8A8A8A"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#E81123"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <!-- Minimize And Maximize Buttons -->
+        <Style TargetType="Button" x:Key="MaxMinButtons">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="TextBlock.TextAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="#8A8A8A"/>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3A3C3D"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Maple Button Style -->
+        <Style TargetType="Button" x:Key="MapleButton">
+            <Setter Property="Background" Value="#7336B4" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Button.Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#A179CD"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="#352844"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Dashboard Buttons Style -->
+        <Style TargetType="Button" x:Key="DashboardButtons">
+            <Setter Property="Background" Value="#242526" />
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Button.Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#3A3C3D"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

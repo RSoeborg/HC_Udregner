@@ -5,9 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HC_Udregner"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" MinHeight="715" MinWidth="1112" Height="715" Width="1112" WindowStyle="None" AllowsTransparency="True" Background="Transparent" MouseDown="Window_MouseDown">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="0"
+                      GlassFrameThickness="10"
+                      NonClientFrameEdges="None"
+                      ResizeBorderThickness="3"
+                      CornerRadius="20"/>
+    </WindowChrome.WindowChrome>
     <Grid>
-        
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="950"/>
+            <ColumnDefinition Width="162"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="Container" Grid.Column="0">
+            <local:Dashboard x:Name="Dashboard"/>
+            <local:GaussJordanPanel x:Name="GaussJordanPanel" Visibility="Collapsed"/>
+            <local:GaussianPanel x:Name="GaussianPanel" Visibility="Collapsed"/>
+            <local:InversMatrixPanel x:Name="InversMatrixPanel" Visibility="Collapsed"/>
+        </Grid>
+
+        <Border x:Name="Toolbar" Grid.Column="1" Background="#242526" CornerRadius="0 20 20 0">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
+            </Border.Effect>
+            <StackPanel>
+                <StackPanel Height="665">
+                    <StackPanel Orientation="Horizontal" Height="21">
+                        <Button Content="{StaticResource Minimize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="minimizeButton_Click"/>
+                        <Button Content="{StaticResource Maximize}" Foreground="#8A8A8A" Width="54" Style="{StaticResource MaxMinButtons}" Click="maximizeButton_Click"/>
+                        <Button Content="{StaticResource Close}" Foreground="#8A8A8A" Width="54" Style="{StaticResource CloseButton}" Click="closeButton_Click"/>
+                    </StackPanel>
+                    <StackPanel>
+                        <Button x:Name="btnSelectMaple" Content="Vælg Maple" Margin="15 61 15 0" Height="38" Foreground="White" FontSize="18" FontWeight="Regular" Style="{StaticResource MapleButton}" Click="btnSelectMaple_Click"/>
+                        <Grid Margin="0 12 0 0">
+                            <Border BorderBrush="#7336B4" BorderThickness="2" CornerRadius="5" Width="132" Height="53" Background="#242526">
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Black" Direction="-130" ShadowDepth="5" BlurRadius="5" Opacity="0.3" />
+                                </Border.Effect>
+                            </Border>
+                            <RichTextBox x:Name="rtbMaplePath" IsReadOnly="True" Margin="17 2" Foreground="White" FontSize="13" FontWeight="Regular" Background="Transparent" BorderBrush="Transparent" BorderThickness="0" MaxWidth="132" MaxHeight="53">
+                                <FlowDocument>
+                                    <Paragraph>
+                                        <Run Text="Vælg maple path"/>
+                                    </Paragraph>
+                                </FlowDocument>
+                            </RichTextBox>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0" Height="50" Content="HC Udregner" Foreground="White" FontSize="20" FontWeight="Medium"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
