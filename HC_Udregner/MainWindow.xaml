@@ -60,6 +60,10 @@
                         </RichTextBox>
                     </Grid>
                 </StackPanel>
+                <TextBlock Grid.Row="2" TextWrapping="WrapWithOverflow" TextAlignment="Center" Margin="2 2 2 2" FontSize="18" Foreground="White">
+                    Vælg venligst en maple path. <LineBreak/>
+                    Uden En maple path vil programmet ikke virke, da programmet udnytter maples ressourcer til at udregne de forskellige <LineBreak/> matrixer.
+                </TextBlock>
                 <Label Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 5 0 0" Height="50" Content="HC Udregner" Foreground="White" FontSize="20" FontWeight="Medium"/>
             </Grid>
         </Border>
