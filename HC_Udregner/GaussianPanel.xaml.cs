@@ -1,6 +1,5 @@
 ﻿using HC_Lib.JavaWin;
 using HC_Udregner.Properties;
-using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
